@@ -42,14 +42,14 @@ spec:
             httpGet:
               path: {{ .Values.server.contextPath }}/actuator/health/liveness
               port: {{ .Values.server.port }}
-              initialDelaySeconds: 60
-              periodSeconds: 5
+            initialDelaySeconds: 60
+            periodSeconds: 5
           readinessProbe:
             httpGet:
               path: {{ .Values.server.contextPath }}/actuator/health/readiness
               port: {{ .Values.server.port }}
-              initialDelaySeconds: 60
-              periodSeconds: 5
+            initialDelaySeconds: 60
+            periodSeconds: 5
           lifecycle:
             preStop:
               exec:
