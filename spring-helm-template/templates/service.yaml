@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: spring-application
+  name: {{ include "spring-helm-sample.fullname" . }}
+  labels:
+    {{- include "spring-helm-sample.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "spring-helm-sample.selectorLabels" . | nindent 4 }}
