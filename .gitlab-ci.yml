@@ -11,7 +11,7 @@ maven-build:
   stage: maven-build
   image: eclipse-temurin:11-jdk-alpine
   script: 
-      - ls -l
+      - ls -a
       - chmod +x mvnw
       - ./mvnw package
   artifacts:
