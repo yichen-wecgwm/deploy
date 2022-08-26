@@ -50,7 +50,7 @@ ingress:
   hosts:
     - host: chart-example.local
       paths:
-        - path: /
+        - path: /spring-boot-sample
           pathType: ImplementationSpecific
   tls:
     - secretName: chart-example-tls
