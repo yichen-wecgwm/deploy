@@ -1,46 +1,15 @@
 variables:
-  SPRING_PROFILES_ACTIVE: gitlab-ci
-  APPLICATION_NAME: spring-boot-sample
-  
+  FILE_PATH: /usr/local/deploy/
+  HELM_CHART_PATH: spring-helm-chart
+
 stages:
-  - maven-build
-  - docker-build
-  - deploy
+  - deploy-cp
 
-maven-build:
-  stage: maven-build
-  image: eclipse-temurin:11-jdk-alpine
-  script: 
-      - ls -a
-      - chmod +x mvnw
-      - ./mvnw package
-  artifacts:
-    paths:
-      - target/*.jar
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "master"'
-  tags:
-    - master-k8s
-
-docker-build:
-  stage: docker-build
-  image: docker:18.09.7-dind 
-  services:
-    - docker:18.09.7-dind
+deploy-cp:
+  stage: deploy-cp
   script:
-    - export DOCKER_HOST=tcp://localhost:2375
-    - docker build -t $CI_DOCKER_USER/$APPLICATION_NAME:$CI_COMMIT_BRANCH .
-    - docker login -u "$CI_DOCKER_USER" -p "$CI_DOCKER_PASSWORD"
-    - docker push "$CI_DOCKER_USER/$APPLICATION_NAME:$CI_COMMIT_BRANCH"
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "master"'
-  tags:
-    - master-k8s
-
-helm-deploy:
-  stage: deploy
-  script:
-    - helm upgrade -i -f helm/values-$CI_COMMIT_BRANCH.yaml -n spring-application $APPLICATION_NAME  /usr/local/kubernetes/helm/spring-helm-templates
+    - rm -r $FILE_PATH$HELM_CHART_PATH
+    - cp ./$HELM_CHART_PATH $FILE_PATH$HELM_CHART_PATH
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
   tags:
