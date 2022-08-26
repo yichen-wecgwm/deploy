@@ -44,3 +44,4 @@ helm-deploy:
     - if: '$CI_COMMIT_BRANCH == "master"'
   tags:
     - master-shell
+  dependencies: []
