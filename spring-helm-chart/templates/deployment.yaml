@@ -56,14 +56,10 @@ spec:
             preStop:
               exec:
                 command: [ "sh", "-c", "sleep 10" ]
-#          env: # TODO
-#            - name: JAVA_TOOL_OPTIONS
-#              value: -Xms256M -Xmx256M -Xss256K -XX:ReservedCodeCacheSize=64M
-#          envFrom: # TODO
-#            - configMapRef:
-#                name: { { .Release.Name } }
-#            - secretRef:
-#                name: { { .Release.Name } }
+          env:
+            {{ toYaml .Values.env | nindent 12 }}
+          envFrom:
+            {{ toYaml .Values.envFrom | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
