@@ -48,7 +48,8 @@ ingress:
   annotations: {}
     # kubernetes.io/ingress.class: nginx
   hosts:
-    - paths:
+    - host: *
+      paths:
         - path: /spring-boot-sample
           pathType: ImplementationSpecific
   tls:
