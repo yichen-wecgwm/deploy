@@ -57,9 +57,9 @@ spec:
               exec:
                 command: [ "sh", "-c", "sleep 10" ]
           env:
-            {{ toYaml .Values.env | indent 12 }}
+            {{ toYaml .Values.env | nindent 12 }}
           envFrom:
-            {{ toYaml .Values.envFrom | indent 12 }}
+            {{ toYaml .Values.envFrom | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
