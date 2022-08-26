@@ -15,7 +15,7 @@ apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
-  namespace: spring-application
+  namespace: spring
   name: {{ $fullName }}
   labels:
     {{- include "spring-helm-sample.labels" . | nindent 4 }}
