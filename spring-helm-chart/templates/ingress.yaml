@@ -40,7 +40,7 @@ spec:
   rules:
     - http:
         paths:
-          {{- range .Values.ingress.paths }}
+          {{- range .Values.ingress.http.paths }}
           - path: {{ .path }}
             {{- if and .pathType (semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion) }}
             pathType: {{ .pathType }}
