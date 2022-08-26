@@ -8,7 +8,7 @@ stages:
 deploy-cp:
   stage: deploy-cp
   script:
-    - rm -r $FILE_PATH$HELM_CHART_PATH
+    - rm -r -f $FILE_PATH$HELM_CHART_PATH
     - cp ./$HELM_CHART_PATH $FILE_PATH$HELM_CHART_PATH
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
