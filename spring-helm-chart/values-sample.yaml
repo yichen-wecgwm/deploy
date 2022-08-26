@@ -48,7 +48,7 @@ ingress:
   annotations: {}
     # kubernetes.io/ingress.class: nginx
   hosts:
-    - host: chart-example.local
+    - host: wecgwm.com
       paths:
         - path: /spring-boot-sample
           pathType: ImplementationSpecific
