@@ -14,12 +14,11 @@ spec:
       {{- include "spring-helm-sample.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      annotations: {
+      annotations:
         rollme: { { randAlphaNum 5 | quote } }
 { { - if .Values.podAnnotations } }
 { { toYaml .Values.podAnnotations | trimSuffix "\n" | indent 8 } }
 { { - end } }
-      }
       labels:
         {{- include "spring-helm-sample.selectorLabels" . | nindent 8 }}
     spec:
