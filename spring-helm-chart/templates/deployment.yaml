@@ -16,7 +16,7 @@ spec:
     metadata:
       annotations: {
         rollme: {{ randAlphaNum 5 | quote }}
-        { { - if .Values.podAnnotations } }
+        { { - if not .Values.podAnnotations } }
         { { toYaml .Values.podAnnotations | trimSuffix "\n" | nindent 8 } }
         { { - end } }
       }
