@@ -18,6 +18,9 @@ spec:
         rollme: {{ randAlphaNum 5 | quote }}
       labels:
         {{- include "spring-helm-sample.selectorLabels" . | nindent 8 }}
+      { { - if .Values.podAnnotations } }
+      { { toYaml .Values.podAnnotations | trimSuffix "\n" | indent 8 } }
+      { { - end } }
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
