@@ -42,7 +42,9 @@ serviceAccount:
   annotations: {}
   name: ""
 
-podAnnotations: {}
+podAnnotations: {
+  asd: asv
+}
 
 podSecurityContext: {}
   # fsGroup: 2000
