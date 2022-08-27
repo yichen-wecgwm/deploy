@@ -42,9 +42,7 @@ serviceAccount:
   annotations: {}
   name: ""
 
-podAnnotations: {
-  rollme: '{{ randAlphaNum 5 | quote }}'
-}
+podAnnotations: []
 
 podSecurityContext: {}
   # fsGroup: 2000
