@@ -2,7 +2,7 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  namespace: java
+  namespace: app
   name: {{ include "spring-helm-sample.fullname" . }}
   labels:
     {{- include "spring-helm-sample.labels" . | nindent 4 }}
