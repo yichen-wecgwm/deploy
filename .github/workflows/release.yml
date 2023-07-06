@@ -11,5 +11,6 @@ jobs:
   deploy-cp:
     runs-on: self-hosted
     steps:
+    - uses: actions/checkout@v3
     - run: rm -r -f $FILE_PATH$HELM_CHART_PATH
     - run: cp -r ./$HELM_CHART_PATH $FILE_PATH
