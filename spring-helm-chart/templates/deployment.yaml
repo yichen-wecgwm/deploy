@@ -42,14 +42,14 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: {{ .Values.server.contextPath }}/actuator/health/liveness
+              path: {{ .Values.server.contextPath }}actuator/health/liveness
               port: {{ .Values.server.port }}
             initialDelaySeconds: 30
             periodSeconds: 8
             failureThreshold: 5
           readinessProbe:
             httpGet:
-              path: {{ .Values.server.contextPath }}/actuator/health/readiness
+              path: {{ .Values.server.contextPath }}actuator/health/readiness
               port: {{ .Values.server.port }}
             initialDelaySeconds: 30
             periodSeconds: 8
