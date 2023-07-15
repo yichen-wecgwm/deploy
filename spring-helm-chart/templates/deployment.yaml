@@ -68,8 +68,13 @@ spec:
             {{ toYaml .Values.envFrom | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      initContainers:
+        - name: volume-permissions
+          image: busybox
+          command: [ "/bin/sh" ]
+          args: [ "-c", "chmod +w /application/log" ]
           volumeMounts:
-            - mountPath: /log
+            - mountPath: /application/log
               name: log-volume
       volumes:
         - name: log-volume
