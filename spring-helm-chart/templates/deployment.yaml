@@ -60,10 +60,22 @@ spec:
                 command: [ "sh", "-c", "sleep 10" ]
           env:
             {{ toYaml .Values.env | nindent 12 }}
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           envFrom:
             {{ toYaml .Values.envFrom | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /log
+              name: log-volume
+      volumes:
+        - name: log-volume
+          hostPath:
+            path: /usr/local/log/{{ include "spring-helm-sample.fullname" . }}
+            type: Directory
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
