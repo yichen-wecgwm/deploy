@@ -72,7 +72,7 @@ spec:
         - name: volume-permissions
           image: busybox
           command: [ "/bin/sh" ]
-          args: [ "-c", "chmod +w /application/log" ]
+          args: [ "-c", "chmod a+w /application/log" ]
           volumeMounts:
             - mountPath: /application/log
               name: log-volume
