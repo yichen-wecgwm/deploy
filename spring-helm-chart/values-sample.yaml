@@ -17,6 +17,8 @@ server:
   contextPath: /spring-boot-sample
 
 env:
+  - name: SPRING_PROFILES_ACTIVE
+    value: prod
   - name: MOCK_API_KEY
     valueFrom:
       configMapKeyRef:
