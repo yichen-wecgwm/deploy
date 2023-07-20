@@ -69,19 +69,9 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-          {{- with .Values.volumeMounts }}
-            {{- toYaml . | nindent 8 }}
-          {{- end }}
-            - mountPath: /application/log
-              name: log-volume
+            {{ toYaml .Values.volumeMounts | nindent 12 }}
       volumes:
-      {{- with .Values.volumes }}
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-        - name: log-volume
-          hostPath:
-            path: /usr/local/log
-            type: Directory
+        {{ toYaml .Values.volumes | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

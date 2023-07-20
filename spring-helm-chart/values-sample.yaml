@@ -30,9 +30,15 @@ env:
         name: java-config
         key: MOCK_API_ENABLE
 
-volumeMounts: {}
+volumeMounts:
+  - mountPath: /application/log
+    name: log-volume
 
-volumes: {}
+volumes:
+  - name: log-volume
+    hostPath:
+      path: /usr/local/log
+      type: Directory
 
 #envFrom:
 #  - secretRef:
