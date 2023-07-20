@@ -30,15 +30,9 @@ env:
         name: java-config
         key: MOCK_API_ENABLE
 
-volumeMounts:
-  - mountPath: /application
-    name: biliup-rust
+volumeMounts: {}
 
-volumes:
-  - name: biliup-rust
-    hostPath:
-      path: /usr/local/biliup-rust/biliup
-      type: File
+volumes: {}
 
 #envFrom:
 #  - secretRef:
